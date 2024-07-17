@@ -13,5 +13,13 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // deserialization
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("/animal.ser"))) {
+            Animal deserializedAnimal = (Animal) ois.readObject();
+            System.out.println("Deserialization successful : " + deserializedAnimal);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
